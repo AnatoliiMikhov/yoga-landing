@@ -47,6 +47,10 @@ window.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 	}
-	// funcName('parentTabSelector', 'tabSelector', 'contentBlockSelector');
-	forTabsModule(".info-header", ".info-header-tab", ".info-tabcontent");
+
+	let parentTabSelector = ".info-header",
+		tabSelector = ".info-header-tab",
+		contentBlockSelector = ".info-tabcontent";
+
+	forTabsModule(parentTabSelector, tabSelector, contentBlockSelector);
 });

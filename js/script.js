@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
 
 	'use strict';
-<<<<<<< HEAD
 	// код для табов
 	let info = document.querySelector('.info-header'),// получаем родителя
 		tab = document.querySelectorAll('.info-header-tab'), // получаем массив с табами
@@ -20,25 +19,6 @@ window.addEventListener('DOMContentLoaded', function () {
 		if (tabContent[b].classList.contains('hide')) { // если есть класс hide
 			tabContent[b].classList.remove('hide'); // remove class hide
 			tabContent[b].classList.add('show'); // add class show
-=======
-	let info = document.querySelector('.info-header'),
-		tab = document.querySelectorAll('.info-header-tab'),
-		tabContent = document.querySelectorAll('.info-tabcontent');
-
-	function hideTabContent(a) {
-		for (let i = a; i < tabContent.length; i++) {
-			tabContent[i].classList.remove('show');
-			tabContent[i].classList.add('hide');
-		}
-	}
-
-	hideTabContent(1);
-
-	function showTabContent(b) {
-		if (tabContent[b].classList.contains('hide')) {
-			tabContent[b].classList.remove('hide');
-			tabContent[b].classList.add('show');
->>>>>>> 7ed311070254ed49ea5fad9ec430a7dff7f8e1fe
 		}
 	}
 

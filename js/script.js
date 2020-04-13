@@ -25,21 +25,12 @@ window.addEventListener('DOMContentLoaded', function () {
 	info.addEventListener('click', function (event) {
 		let target = event.target;
 
-<<<<<<< HEAD
 		if (target && target.classList.contains('info-header-tab')) { // если есть цель и у неё класс info-header-tab
 			for (let i = 0; i < tab.length; i++) { // перебираем в цикле массив tab
 				if (target == tab[i]) { // если цель target равна элементу tab с индексом i
 					hideTabContent(0); // скрываем все элементы tabContent
 					showTabContent(i); // показываем элемент tabContent с индексом i - tabContent[i]
 					break; //выходим из цикла
-=======
-		if (target && target.classList.contains('info-header-tab')) {
-			for (let i = 0; i < tab.length; i++) {
-				if (target == tab[i]) {
-					hideTabContent(0);
-					showTabContent(i);
-					break;
->>>>>>> 7ed311070254ed49ea5fad9ec430a7dff7f8e1fe
 				}
 			}
 		}

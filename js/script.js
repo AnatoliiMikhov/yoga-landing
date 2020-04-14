@@ -60,10 +60,13 @@ window.addEventListener("DOMContentLoaded", function () {
 	let deadline = "2020-05-15"; // Deadline date
 
 	function getTimeRemaining(endtime) {
+		let diffTime = new Date().getTimezoneOffset() / 60; //разница между UTC и лок. врем.
+		diffTime = Math.abs(diffTime); // возвращает абсолютное значение числа
+
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 			seconds = Math.floor((t / 1000) % 60),
-			minutes = Math.floor((t / 1000 / 60) % 60),
-			hours = Math.floor((t / (1000 * 60 * 60) % 24) - 3),
+			minutes = Math.floor((t / (1000 * 60)) % 60),
+			hours = Math.floor((t / (1000 * 60 * 60) % 24) - diffTime),
 			days = Math.floor(t / (1000 * 60 * 60 * 24));
 
 		return {
@@ -71,7 +74,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			hours: hours,
 			minutes: minutes,
 			seconds: seconds,
-			days: days
+			days: days,
 		};
 	}
 

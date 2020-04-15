@@ -56,17 +56,16 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Tabs Code END
 
 	//	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*
+	//	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*
 	// Timer code Start
 	let deadline = "2020-05-15"; // Deadline date
+	let diffTime = Math.abs(new Date().getTimezoneOffset() / 60); //разница между UTC и лок. врем. абс значение числа
 
 	function getTimeRemaining(endtime) {
-		let diffTime = new Date().getTimezoneOffset() / 60; //разница между UTC и лок. врем.
-		diffTime = Math.abs(diffTime); // возвращает абсолютное значение числа
-
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 			seconds = Math.floor((t / 1000) % 60),
 			minutes = Math.floor((t / (1000 * 60)) % 60),
-			hours = Math.floor((t / (1000 * 60 * 60) % 24) - diffTime),
+			hours = Math.floor((t / (1000 * 60 * 60)) % 24) - diffTime,
 			days = Math.floor(t / (1000 * 60 * 60 * 24));
 
 		return {
@@ -77,7 +76,6 @@ window.addEventListener("DOMContentLoaded", function () {
 			days: days,
 		};
 	}
-
 
 	function setClock(id, endtime) {
 		let timer = document.getElementById(id),

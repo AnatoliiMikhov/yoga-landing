@@ -58,14 +58,14 @@ window.addEventListener("DOMContentLoaded", function () {
 	//	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*
 	//	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*	-	*
 	// Timer code Start
-	let deadline = "2020-05-15"; // Deadline date
-	let diffTime = Math.abs(new Date().getTimezoneOffset() / 60); //разница между UTC и лок. врем. абс значение числа
+	let diffTime = Math.abs(new Date().getTimezoneOffset() / 60);
+	let deadline = `2020-05-15T00:00:00+0${diffTime}:00`; // Deadline date
 
 	function getTimeRemaining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 			seconds = Math.floor((t / 1000) % 60),
 			minutes = Math.floor((t / (1000 * 60)) % 60),
-			hours = Math.floor((t / (1000 * 60 * 60)) % 24) - diffTime,
+			hours = Math.floor((t / (1000 * 60 * 60)) % 24),
 			days = Math.floor(t / (1000 * 60 * 60 * 24));
 
 		return {
@@ -100,7 +100,6 @@ window.addEventListener("DOMContentLoaded", function () {
 			hours.textContent = addZero(t.hours);
 			minutes.textContent = addZero(t.minutes);
 			seconds.textContent = addZero(t.seconds);
-			// console.log(t.days);
 
 			if (t.total <= 0) {
 				clearInterval(timeInterval);
@@ -113,5 +112,23 @@ window.addEventListener("DOMContentLoaded", function () {
 	}
 
 	setClock("timer", deadline);
-	// Timer Code End
+	// Timer Code End =========================================================
+
+	// Modal Start ============================================================
+	const more = document.querySelector('.more'),
+		overlay = document.querySelector('.overlay'),
+		close = document.querySelector('.popup-close');
+
+	more.addEventListener('click', function () {
+		overlay.style.display = 'block';
+		this.classList.add('more-splash');
+		document.body.style.overflow = 'hidden';
+	});
+
+	close.addEventListener('click', function () {
+		overlay.style.display = 'none';
+		more.classList.remove('more-splash');
+		document.body.style.overflow = '';
+	});
+	// Modal END ==============================================================
 });

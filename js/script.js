@@ -25,7 +25,8 @@ window.addEventListener("DOMContentLoaded", function () {
 				tabContent[b].classList.add("show"); // add class show
 			}
 		}
-		info.addEventListener("click", function (event) {
+
+		info.addEventListener("click", (event) => {
 			let target = event.target;
 			let classTab = tabs;
 
@@ -115,20 +116,20 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Timer Code End =========================================================
 
 	// Modal Start ============================================================
-	const more = document.querySelector('.more'),
-		overlay = document.querySelector('.overlay'),
-		close = document.querySelector('.popup-close');
+	const more = document.querySelector(".more"),
+		overlay = document.querySelector(".overlay"),
+		close = document.querySelector(".popup-close");
 
-	more.addEventListener('click', function () {
-		overlay.style.display = 'block';
-		this.classList.add('more-splash');
-		document.body.style.overflow = 'hidden';
+	more.addEventListener("click", () => {
+		overlay.style.display = "block";
+		this.classList.add("more-splash");
+		document.body.style.overflow = "hidden";
 	});
 
-	close.addEventListener('click', function () {
-		overlay.style.display = 'none';
-		more.classList.remove('more-splash');
-		document.body.style.overflow = '';
+	close.addEventListener("click", () => {
+		overlay.style.display = "none";
+		more.classList.remove("more-splash");
+		document.body.style.overflow = "";
 	});
 	// Modal END ==============================================================
 });

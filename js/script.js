@@ -134,6 +134,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Modal END ==============================================================
 
 	// Form JSON request Start ================================================
+	// sending data from a forms.
 	let message = {
 		loading: 'Идёт загрузка...',
 		success: 'Спасибо! Мы скоро свяжемся с вами...',
@@ -141,43 +142,52 @@ window.addEventListener("DOMContentLoaded", function () {
 	};
 
 	let form = document.querySelector('.main-form'),
-		input = document.getElementsByTagName('input'),
+		contactForm = document.querySelector('#form'),
 		statusMessage = document.createElement('div');
 
 	statusMessage.classList.add('status');
 
-	form.addEventListener('submit', function (event) {
-		event.preventDefault();
-		form.appendChild(statusMessage);
+	function requestForm(form) {
+		form.addEventListener('submit', function (event) {
+			event.preventDefault();
+			this.appendChild(statusMessage);
 
-		let request = new XMLHttpRequest();
-		request.open('POST', 'server.php');
-		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+			let request = new XMLHttpRequest();
+			request.open('POST', 'server.php');
+			//request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-		let formData = new FormData(form);
+			let formData = new FormData(this);
 
-		let obj = {};
-		formData.forEach(function (value, key) {
-			obj[key] = value;
+			let obj = {};
+			formData.forEach(function (value, key) {
+				obj[key] = value;
 
-		});
-		let json = JSON.stringify(obj);
+			});
+			let json = JSON.stringify(obj);
 
-		request.send(json);
+			request.send(json);
 
-		request.addEventListener('readystatechange', function () {
-			if (request.readyState < 4) {
-				statusMessage.innerHTML = message.loading;
-			} else if (request.readyState == 4 && request.status == 200) {
-				statusMessage.innerHTML = message.success;
-			} else {
-				statusMessage.innerHTML = message.failure;
+			request.addEventListener('readystatechange', function () {
+				if (request.readyState < 4) {
+					statusMessage.innerHTML = message.loading;
+				} else if (request.readyState == 4 && request.status == 200) {
+					statusMessage.innerHTML = message.success;
+				} else {
+					statusMessage.innerHTML = message.failure;
+				}
+			});
+
+			let input = this.querySelectorAll('input');
+
+			for (let i = 0; i < input.length; i++) {
+				input[i].value = "";
 			}
 		});
+	}
 
-		for (let i = 0; i < input.length; i++) {
-			input[i].value = "";
-		}
-	});
+	requestForm(form);
+	requestForm(contactForm);
+
 	// Form JSON request End ==================================================
 });

@@ -116,20 +116,33 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Timer Code End =========================================================
 
 	// Modal Start ============================================================
-	const more = document.querySelector(".more"),
+	const btnOpenModal = document.querySelectorAll('.description-btn'),
+		more = document.querySelector(".more"),
 		overlay = document.querySelector(".overlay"),
 		close = document.querySelector(".popup-close");
 
-	more.addEventListener("click", function () {
+	function openModal() {
 		overlay.style.display = "block";
-		this.classList.add("more-splash");
 		document.body.style.overflow = "hidden";
+	}
+
+	function closeModal() {
+		overlay.style.display = "none";
+		document.body.style.overflow = "";
+	}
+
+	btnOpenModal.forEach(btn => {
+		btn.addEventListener('click', openModal);
+	});
+
+	more.addEventListener("click", function () {
+		openModal();
+		this.classList.add("more-splash");
 	});
 
 	close.addEventListener("click", () => {
-		overlay.style.display = "none";
+		closeModal();
 		more.classList.remove("more-splash");
-		document.body.style.overflow = "";
 	});
 	// Modal END ==============================================================
 
@@ -184,7 +197,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 				});
 			}
-			
+
 			function clearInput() {
 				for (let i = 0; i < input.length; i++) {
 					input[i].value = "";
@@ -203,4 +216,12 @@ window.addEventListener("DOMContentLoaded", function () {
 	sendForm(contactForm);
 
 	// Form JSON request End ==================================================
+	// ========================================================================
+
+	// Slider Start ===========================================================
+	// ========================================================================
+
+
+
+
 });

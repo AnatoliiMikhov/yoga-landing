@@ -9,12 +9,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ups7write/yoga-landing.git"
+		"url": "git+https://github.com/AnatoliiMikhov/yoga-landing.git"
 	},
 	"author": "Anatolii Mikhov",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/ups7write/yoga-landing/issues"
+		"url": "https://github.com/AnatoliiMikhov/yoga-landing/issues"
 	},
 	"homepage": "https://github.com/ups7write/yoga-landing#readme",
 	"devDependencies": {
